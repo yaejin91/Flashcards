@@ -67,73 +67,84 @@ var flashcards = [
 
 var CardManager = function(){
  	
- 	this.currentCard = 0;
+ 	currentCard = 0;
 
  	this.init = function(){
- 		cardManager.showQuestionAnswer(cardManager.currentCard);
+ 		showQuestionAnswer(currentCard);
  		$('#flashcard-answer').hide();
 
  		$("#next-card").click(function(){
- 			cardManager.nextCard();
- 			cardManager.showQuestionAnswer(cardManager.currentCard);
+ 			nextCard();
+ 			showQuestionAnswer(currentCard);
  		});
 
  		$("#previous-card").click(function(){
- 			cardManager.prevCard();
- 			cardManager.showQuestionAnswer(cardManager.currentCard);
+ 			prevCard();
+ 			showQuestionAnswer(currentCard);
  		});
 
  		$("#flip-card").click(function(){
- 			cardManager.flipCard();
- 			cardManager.showQuestionAnswer(cardManager.currentCard);
+ 			flipCard();
+ 			showQuestionAnswer(currentCard);
  		});
 
  		$("#random-card").click(function(){
- 			cardManager.randomCard();
- 			cardManager.showQuestionAnswer(cardManager.currentCard);
+ 			randomCard();
+ 			showQuestionAnswer(currentCard);
+ 		});
+
+ 		$("#reset-stack").click(function(){
+ 			resetStack();
+ 			showQuestionAnswer(currentCard);
  		});
 	};
 
-	this.showQuestionAnswer = function(index){
+	showQuestionAnswer = function(index){
 		var card = flashcards[index];
 		$("#flashcard-question").html("Question: "+card.question);
 		$("#flashcard-answer").html("Answer: "+card.answer);
 	};
 
-	this.nextCard = function(){
-		if(this.currentCard < flashcards.length - 1){
-			this.currentCard++;
+	nextCard = function(){
+		if(currentCard < flashcards.length - 1){
+			currentCard++;
 			$('#flashcard-answer').hide();
-		} else if(this.currentCard == flashcards.length - 1){
+		} else if(currentCard == flashcards.length - 1){
 			alert("Congratulations! You have seen all of the cards!");
 		}
-		return this.currentCard;
+		return currentCard;
 	 };
 	
-	this.prevCard = function(){
-		if(this.currentCard > 0){
-			this.currentCard--;
+	prevCard = function(){
+		if(currentCard > 0){
+			currentCard--;
 			$('#flashcard-answer').hide();
 		} else {
 			alert("This is the first card. Click OK to continue.");
 		}
-		return this.currentCard;
+		return currentCard;
 	};
 
-	this.flipCard = function(){
+	flipCard = function(){
 		$("#flashcard-answer").toggle();
-		return this.currentCard;
+		return currentCard;
 	};
 
-	this.randomCard = function(){
-		var indexArray = this.currentCard;
-		this.currentCard = Math.floor((Math.random() * (flashcards.length - 1)) + 1);
+	randomCard = function(){
+		var indexArray = currentCard;
+		currentCard = Math.floor((Math.random() * (flashcards.length - 1)) + 1);
 		$('#flashcard-answer').hide();
 		return indexArray;
+	};
+
+	resetStack = function() {
+		$('#flashcard-answer').hide();
+		currentCard = 1;
+
+		return currentCard;
 	};
 		
 }
 
 var cardManager = new CardManager();
-
 cardManager.init();
