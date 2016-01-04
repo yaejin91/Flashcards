@@ -4,6 +4,10 @@
 
 var flashcards = [
 	{
+		"question": "This is an example question. Press 'Flip' to see answer.",
+		"answer": "Good Job! Now go onto the next card."
+	},
+	{
 		"question": "What is a multi-dimensional array?",
 		"answer": "It's an array within an array."
 	},
@@ -121,8 +125,12 @@ var CardManager = function(){
 	};
 
 	this.flipCard = function(){
-		$("#flashcard-answer").toggle();
-		return this.currentCard;
+		if(this.currentCard == 0) {
+			alert("I SAID NEXT, NOT FLIP.")
+		} else {
+			$("#flashcard-answer").toggle();
+			return this.currentCard;
+		}
 	};
 
 	this.randomCard = function(){
