@@ -1,0 +1,51 @@
+article{
+	border:1px solid #3BB9FF;
+	border-radius:20px;
+	margin-top:5em;
+	min-height:2em;
+	max-width:28em;
+	text-align:center;
+	margin: auto;
+	padding:3em;
+	background-color: #3BB9FF;
+
+}
+
+/*.container{
+	padding-right: 15px;
+	padding-left: 15px;
+  	margin-right: auto;
+  	margin-left: auto;
+}*/
+
+/*.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}*/
+
+.flashcard-container{
+	text-align:center;
+}
+
+.button-container{
+	text-align:center;
+	margin:0 auto;
+	margin-top:1em;
+	padding: 0em;
+	min-height:1em;
+	max-width:20em;
+}
+
+#flashcard-answer{
+	font-style: italic;
+}
+
+#flashcard-introq{
+	font-weight: bold;
+	font-size:20px;
+}
+
+section{
+	font-family: 'Open Sans', sans-serif;
+	color:#FFFFFF;
+}
