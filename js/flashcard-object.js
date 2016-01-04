@@ -4,8 +4,8 @@
 
 var flashcards = [
 	{
-		"question": "This is an example question. Press 'Flip' to see answer.",
-		"answer": "Good Job! Now go onto the next card."
+		"question": "THIS IS AN EXAMPLE QUESTION. Press 'Flip' to see answer.",
+		"answer": "Good Job! Now go onto the next card by clicking 'Next'."
 	},
 	{
 		"question": "What is a multi-dimensional array?",
@@ -70,31 +70,27 @@ var CardManager = function(){
  	this.currentCard = 0;
 
  	this.init = function(){
- 		$('#flashcard-introq');
+ 		cardManager.showQuestionAnswer(cardManager.currentCard);
  		$('#flashcard-answer').hide();
 
  		$("#next-card").click(function(){
  			cardManager.nextCard();
  			cardManager.showQuestionAnswer(cardManager.currentCard);
- 			$('#flashcard-introq').hide();
  		});
 
  		$("#previous-card").click(function(){
  			cardManager.prevCard();
  			cardManager.showQuestionAnswer(cardManager.currentCard);
- 			$('#flashcard-introq').hide();
  		});
 
  		$("#flip-card").click(function(){
  			cardManager.flipCard();
  			cardManager.showQuestionAnswer(cardManager.currentCard);
- 			$('#flashcard-introq').hide();
  		});
 
  		$("#random-card").click(function(){
  			cardManager.randomCard();
  			cardManager.showQuestionAnswer(cardManager.currentCard);
- 			$('#flashcard-introq').hide();
  		});
 	};
 
@@ -125,12 +121,8 @@ var CardManager = function(){
 	};
 
 	this.flipCard = function(){
-		if(this.currentCard == 0) {
-			alert("I SAID NEXT, NOT FLIP.")
-		} else {
-			$("#flashcard-answer").toggle();
-			return this.currentCard;
-		}
+		$("#flashcard-answer").toggle();
+		return this.currentCard;
 	};
 
 	this.randomCard = function(){
